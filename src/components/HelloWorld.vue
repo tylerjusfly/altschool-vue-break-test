@@ -28,15 +28,26 @@
       <a class="close" href="#" @Click="closeModal">&times;</a>
       <label>
         Username
-        <input type="text" placeholder="Enter A Username" />
+        <input
+          type="text"
+          placeholder="Enter A Username"
+          v-model="Inputusername"
+        />
       </label>
-      <button class="button">SignIn</button>
+      <button class="button" @Click="signInUser">
+        <img
+          class="btn-icon"
+          src="https://www.svgrepo.com/show/281591/send.svg"
+          alt="Arrow Svg"
+          style="width: 30px !important"
+        />
+        <span>SignIn</span>
+      </button>
     </div>
   </div>
 </template>
 
 <script>
-// import image from "./shopping-cart.svg";
 export default {
   name: 'HelloWorld',
   props: {
@@ -46,6 +57,8 @@ export default {
     return {
       modalOpen: '',
       showPopup: false,
+      Inputusername: '',
+      username: 'tylerjusfly',
     };
   },
   methods: {
@@ -57,6 +70,9 @@ export default {
     closeModal() {
       this.showPopup = false;
       this.modalOpen = '';
+    },
+    signInUser() {
+      console.log(this.Inputusername.toLowerCase());
     },
   },
 };
@@ -105,9 +121,13 @@ export default {
   background-color: #213b68;
 }
 .btn-icon {
+  vertical-align: middle;
   width: 40px;
+  padding-right: 8px;
 }
 span {
+  vertical-align: middle;
+  align-self: center;
   font-weight: 700;
 }
 .modal-open {
@@ -155,7 +175,7 @@ input {
   border-radius: 0.4em;
   border: 1px solid #213b68;
   padding-inline: 2em 0.9em;
-  width: 10em;
+  width: 12em;
   margin-bottom: 2em;
 }
 label {
