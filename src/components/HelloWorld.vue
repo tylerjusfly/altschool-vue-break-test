@@ -44,6 +44,16 @@
         <span>SignIn</span>
       </button>
     </div>
+    <!-- SignIn completed Modal -->
+    <div class="popup" v-show="success">
+      <h3>Hello world</h3>
+      <a class="close" href="#" @Click="closeModal">&times;</a>
+      <img
+        src="https://www.svgrepo.com/show/295329/connect-transfer.svg"
+        alt="image"
+        width="100"
+      />
+    </div>
   </div>
 </template>
 
@@ -59,6 +69,7 @@ export default {
       showPopup: false,
       Inputusername: '',
       username: 'tylerjusfly',
+      success: false,
     };
   },
   methods: {
@@ -70,9 +81,12 @@ export default {
     closeModal() {
       this.showPopup = false;
       this.modalOpen = '';
+      this.success = false;
     },
     signInUser() {
       console.log(this.Inputusername.toLowerCase());
+      this.showPopup = false;
+      this.success = true;
     },
   },
 };
