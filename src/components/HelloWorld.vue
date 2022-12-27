@@ -24,7 +24,14 @@
     </div>
     <!-- Popup -->
     <div v-show="showPopup" class="popup">
-      <h3 class="sign-in-title">Sign In with username TylerJusfly</h3>
+      <h3
+        v-if="setError"
+        style="color: red; text-align: center"
+        class="sign-in-title"
+      >
+        {{ setError }}
+      </h3>
+      <h3 v-else class="sign-in-title">Sign In with username TylerJusfly</h3>
       <a class="close" href="#" @Click="closeModal">&times;</a>
       <label>
         Username
@@ -73,14 +80,14 @@ export default {
       showPopup: false,
       Inputusername: '',
       username: 'tylerjusfly',
-      success: true,
+      success: false,
+      setError: null,
     };
   },
   methods: {
     modalPopup() {
       this.modalOpen = 'modal-open';
       this.showPopup = true;
-      console.log("i'm supposed to popup a modal");
     },
     closeModal() {
       this.showPopup = false;
@@ -89,8 +96,16 @@ export default {
     },
     signInUser() {
       console.log(this.Inputusername.toLowerCase());
-      this.showPopup = false;
-      this.success = true;
+      if (this.Inputusername.toLowerCase() === this.username) {
+        this.showPopup = false;
+        this.success = true;
+        this.setError = null;
+      } else {
+        this.setError = 'Invalid Username';
+        setTimeout(() => {
+          this.setError = null;
+        }, 1000);
+      }
     },
   },
 };
