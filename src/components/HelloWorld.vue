@@ -100,6 +100,7 @@ export default {
         this.showPopup = false;
         this.success = true;
         this.setError = null;
+        this.Inputusername = '';
       } else {
         this.setError = 'Invalid Username';
         setTimeout(() => {
