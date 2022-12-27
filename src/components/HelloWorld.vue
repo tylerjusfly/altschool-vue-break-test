@@ -45,7 +45,7 @@
       </button>
     </div>
     <!-- SignIn completed Modal -->
-    <div class="popup" v-show="success">
+    <div class="popup hello" v-show="success">
       <h3>Hello world</h3>
       <a class="close" href="#" @Click="closeModal">&times;</a>
       <img
@@ -53,6 +53,10 @@
         alt="image"
         width="100"
       />
+      <p style="text-align: center !important">
+        I did'nt plan on letting you add anything to cart, let's just say i
+        pranked you. sorry.
+      </p>
     </div>
   </div>
 </template>
@@ -69,7 +73,7 @@ export default {
       showPopup: false,
       Inputusername: '',
       username: 'tylerjusfly',
-      success: false,
+      success: true,
     };
   },
   methods: {
